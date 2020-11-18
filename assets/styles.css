@@ -1,0 +1,26 @@
+header { 
+background-color: lightcoral;
+height: 55px;
+text-align: center;
+}
+
+.sidebar {
+    height: 500px;
+    width: 250px;
+    background-color: rgb(134, 110, 152);
+    padding: 10px;
+    margin: 10px;
+    float: left;
+    position: relative;
+}
+
+#forecasts {
+    background-color: plum;
+    height: 500px;
+    width: 750px;
+    margin: 10px;
+    padding-top: 25px;
+    float: right;
+    position: relative;
+    text-align: center;
+}

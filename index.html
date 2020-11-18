@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css"/>
+    <title>My Weather App</title>
+</head>
+
+
+<header>
+    <h1>Your Weather Forecasts</h1>
+</header>
+<body>
+<!-- This will contain my search input -->
+<!-- <div class="container"> -->
+    <div class="sidebar">
+    <form id="citySearch">
+    <label>Look at the weather in your city:</label>
+    <input type="text" id="cityName">
+    <button></button>
+    </form>
+     </div>
+
+<!-- I will display my forecasts -->
+    <div id="forecasts">
+        <div class="city"></div>
+        <div class="wind"></div>
+        <div class="humidity"></div>
+        <div class="tempF"></div>
+    </div>
+<!-- </div> -->
+<footer>
+
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=Toledo,Ohio&appid=2af0ef1a0f66a04443807e8de444eb4d"
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      .then(function(response) {
+        console.log(queryURL);
+        console.log(response);
+        $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+        $(".wind").text("Wind Speed: " + response.wind.speed);
+        $(".humidity").text("Humidity: " + response.main.humidity);
+        var tempF = (response.main.temp - 273.15) * 1.80 + 32;
+        $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
+        console.log("Wind Speed: " + response.wind.speed);
+        console.log("Humidity: " + response.main.humidity);
+        console.log("Temperature (F): " + tempF);
+      });
+  </script>
+</body>
+</html>
