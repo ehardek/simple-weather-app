@@ -28,45 +28,64 @@
 </header>
 <body>
 <!-- This will contain my search input -->
-<!-- <div class="container"> -->
+
     <div class="sidebar">
     <form id="citySearch">
-    <label>Look at the weather in your city:</label>
+    <label>Search for a city here!</label>
     <input type="text" id="cityName">
-    <button></button>
+    <button id="search">Search</button>
     </form>
      </div>
 
-<!-- I will display my forecasts -->
-    <div id="forecasts">
-        <div class="city"></div>
+<!-- I will display my forecasts here -->
+    <div id="forecasts" class="container">
+        <div class="place"></div>
         <div class="wind"></div>
         <div class="humidity"></div>
-        <div class="tempF"></div>
+        <div class="temp"></div>
     </div>
-<!-- </div> -->
+
 <footer>
 
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=Toledo,Ohio&appid=2af0ef1a0f66a04443807e8de444eb4d"
+ 
+    function citySearch (event){
+        event.preventDefault ()
+var cityName = $("#cityName").val()
+   
+    console.log (cityName)
+    var currentWeather = "https://api.openweathermap.org/data/2.5/weather?q="+ cityName + "&appid=2af0ef1a0f66a04443807e8de444eb4d"
     $.ajax({
-      url: queryURL,
+      url: currentWeather,
       method: "GET"
     })
       .then(function(response) {
-        console.log(queryURL);
+        console.log(currentWeather);
         console.log(response);
-        $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+        $(".place").html("<h1>" + response.name + " Weather Details</h1>");
         $(".wind").text("Wind Speed: " + response.wind.speed);
         $(".humidity").text("Humidity: " + response.main.humidity);
-        var tempF = (response.main.temp - 273.15) * 1.80 + 32;
-        $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
+        var temp = (response.main.temp - 273.15) * 1.80 + 32;
+        $(".temp").text("Temperature (F) " + temp.toFixed(2));
         console.log("Wind Speed: " + response.wind.speed);
         console.log("Humidity: " + response.main.humidity);
-        console.log("Temperature (F): " + tempF);
+        console.log("Temperature (F): " + temp);
+        var lat = response.coord.lat 
+        var lon = response.coord.lon
+        console.log (lat,lon)
+        var sevenDay ="https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&appid=2af0ef1a0f66a04443807e8de444eb4d"
+        $.ajax({
+        url: sevenDay,
+        method: "GET"
+        }).then(function(sevenData){
+            console.log(sevenData)
+        })
       });
+      $("#cityName").val("")
+    };
+    $("#search").on("click", citySearch )
   </script>
 </body>
 </html>
