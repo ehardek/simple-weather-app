@@ -28,13 +28,14 @@
 </header>
 <body>
 <!-- This will contain my search input -->
-
+<div class="" >
     <div class="sidebar">
     <form id="citySearch">
     <label>Search for a city here!</label>
     <input type="text" id="cityName">
     <button id="search">Search</button>
     </form>
+    <div id="recentSearch"></div>
      </div>
 
 <!-- I will display my forecasts here -->
@@ -44,18 +45,19 @@
         <div class="humidity"></div>
         <div class="temp"></div>
     </div>
-
+</div>
 <footer>
 
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
  
-    function citySearch (event){
-        event.preventDefault ()
-var cityName = $("#cityName").val()
-   
-    console.log (cityName)
+ 
+function citySearch (event){
+  event.preventDefault ()
+  console.log (cityName) 
+    var cityName = $("#cityName").val()
+    // var fiveDay = "https://api.openweathermap.org/data/2.5/forecast?q="+ cityName +"&appid=2af0ef1a0f66a04443807e8de444eb4d"
     var currentWeather = "https://api.openweathermap.org/data/2.5/weather?q="+ cityName + "&appid=2af0ef1a0f66a04443807e8de444eb4d"
     $.ajax({
       url: currentWeather,
@@ -72,20 +74,23 @@ var cityName = $("#cityName").val()
         console.log("Wind Speed: " + response.wind.speed);
         console.log("Humidity: " + response.main.humidity);
         console.log("Temperature (F): " + temp);
-        var lat = response.coord.lat 
-        var lon = response.coord.lon
-        console.log (lat,lon)
-        var sevenDay ="https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&appid=2af0ef1a0f66a04443807e8de444eb4d"
-        $.ajax({
-        url: sevenDay,
-        method: "GET"
-        }).then(function(sevenData){
-            console.log(sevenData)
-        })
+        $("#cityName").val("");
       });
-      $("#cityName").val("")
+    // $.ajax({
+    //     url: fiveDay,
+    //     method: "GET"
+    //     }).then(function(fiveData){
+    //         console.log(fiveData)
+    //     });
+      
     };
-    $("#search").on("click", citySearch )
+    $("").click (function recentSearches (){
+        var h = $("<h2>")
+            h.text("#cityName")
+            
+    })
+    
+    $("#search").on("click", citySearch)
   </script>
 </body>
 </html>
