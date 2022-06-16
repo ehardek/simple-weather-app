@@ -24,73 +24,32 @@
 
 
 <header>
-    <h1>Your Weather Forecasts</h1>
+    <h1>Your Weather Forecast</h1>
 </header>
 <body>
 <!-- This will contain my search input -->
-<div class="" >
-    <div class="sidebar">
+<main class="dashboard" >
+    <aside class="sidebar">
     <form id="citySearch">
     <label>Search for a city here!</label>
     <input type="text" id="cityName">
     <button id="search">Search</button>
     </form>
     <div id="recentSearch"></div>
-     </div>
+  </aside>
 
-<!-- I will display my forecasts here -->
+<!-- I will display my forecast here -->
     <div id="forecasts" class="container">
         <div class="place"></div>
         <div class="wind"></div>
         <div class="humidity"></div>
         <div class="temp"></div>
     </div>
-</div>
+  </main>
 <footer>
 
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
- 
- 
-function citySearch (event){
-  event.preventDefault ()
-  console.log (cityName) 
-    var cityName = $("#cityName").val()
-    // var fiveDay = "https://api.openweathermap.org/data/2.5/forecast?q="+ cityName +"&appid=2af0ef1a0f66a04443807e8de444eb4d"
-    var currentWeather = "https://api.openweathermap.org/data/2.5/weather?q="+ cityName + "&appid=2af0ef1a0f66a04443807e8de444eb4d"
-    $.ajax({
-      url: currentWeather,
-      method: "GET"
-    })
-      .then(function(response) {
-        console.log(currentWeather);
-        console.log(response);
-        $(".place").html("<h1>" + response.name + " Weather Details</h1>");
-        $(".wind").text("Wind Speed: " + response.wind.speed);
-        $(".humidity").text("Humidity: " + response.main.humidity);
-        var temp = (response.main.temp - 273.15) * 1.80 + 32;
-        $(".temp").text("Temperature (F) " + temp.toFixed(2));
-        console.log("Wind Speed: " + response.wind.speed);
-        console.log("Humidity: " + response.main.humidity);
-        console.log("Temperature (F): " + temp);
-        $("#cityName").val("");
-      });
-    // $.ajax({
-    //     url: fiveDay,
-    //     method: "GET"
-    //     }).then(function(fiveData){
-    //         console.log(fiveData)
-    //     });
-      
-    };
-    $("").click (function recentSearches (){
-        var h = $("<h2>")
-            h.text("#cityName")
-            
-    })
-    
-    $("#search").on("click", citySearch)
-  </script>
+<script> </script>
 </body>
 </html>
