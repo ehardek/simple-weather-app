@@ -1,55 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/styles.css"/>
-    <title>My Weather App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <title>My Weather App</title>
 </head>
 
 
 <header>
-    <h1>Your Weather Forecast</h1>
+  <h1>Your Weather Forecast</h1>
 </header>
-<body>
-<!-- This will contain my search input -->
-<main class="dashboard" >
-    <aside class="sidebar">
-    <form id="citySearch">
-    <label>Search for a city here!</label>
-    <input type="text" id="cityName">
-    <button id="search">Search</button>
-    </form>
-    <div id="recentSearch"></div>
-  </aside>
 
-<!-- I will display my forecast here -->
-    <div id="forecasts" class="container">
-        <div class="place"></div>
-        <div class="wind"></div>
-        <div class="humidity"></div>
-        <div class="temp"></div>
+<body>
+  <!-- This will contain my search input -->
+  <main class="dashboard">
+    <aside class="sidebar">
+      <form id="citySearch">
+        <label>Search for a city here!</label>
+        <input type="text" id="cityName">
+        <button id="searchBtn">Search</button>
+      </form>
+      <div id="recentSearch" ></div>
+    </aside>
+
+    <!-- This will display the current weather -->
+    <div id="current" class="container" arial-labelledby='currentWeather'>
+      <div class="place"></div>
+      <div class="wind"></div>
+      <div class="humidity"></div>
+      <div class="temp"></div>
+    </div>
+    <!-- This will display my forecast -->
+    <div id='forecast'>
+      
     </div>
   </main>
-<footer>
+  <footer>
 
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script> </script>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script> </script>
 </body>
+
 </html>
