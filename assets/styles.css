@@ -1,16 +1,35 @@
+
 header { 
 background-color: lightcoral;
 height: 55px;
 text-align: center;
 }
+main {
+    display:flex;
+    flex-direction: row;
+    margin:auto;
+    height:75%;
+    
+}
+#forecastContainer{
+    display: flex;
+    flex-direction: row;
+    margin: 2em;
+}
+.forecastCard{ 
+ background-color: lavenderblush;
+ padding:1%;
+ margin: .1em;
+ width: fit-content;
+ height: fit-content;
+}
 
-.sidebar {
+aside {
     height: 500px;
     width: 250px;
     background-color: rgb(134, 110, 152);
-    padding: 10px;
-    margin: 10px;
-    float: left;
+    padding: .5em;
+    margin: .5em ;
     position: relative;
 }
 
@@ -20,7 +39,5 @@ text-align: center;
     width: 750px;
     margin: 10px;
     padding-top: 25px;
-    float: right;
-    position: relative;
     text-align: center;
 }
