@@ -9,8 +9,18 @@ const forecastEl = document.getElementById('forecast')
 
 // TODO: Create forecast fetch function
 // TODO: Create coords fetch function
+
 // TODO: Create event handlers
 // - Search Input Handler
+function searchHandler (e){
+    if(!searchInputEl.value){
+        return;
+    }
+    e.preventDefault()
+    var cityName = searchInputEl.value.trim();
+    console.log(cityName)
+    searchInputEl.value = ''
+}
 // - Recent search click handler 
 // TODO: Render Forecast function
 // TODO: Render Current function 
@@ -18,5 +28,5 @@ const forecastEl = document.getElementById('forecast')
 //  - Render all recent searches on load 
 //  - Recent searchs can be clicked to be searched again 
 
-
+searchFormEl.addEventListener('submit', searchHandler)
 
