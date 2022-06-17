@@ -49,11 +49,11 @@ function searchSubmitHandler(e) {
     searchInputEl.value = ''
 }
 // - Recent search click handler 
-function recentClickHandler(e){
+function recentClickHandler(e) {
     e.preventDefault()
-   var button = e.target
-   var search = button.textContent
-   coordsCall(search)
+    var button = e.target
+    var search = button.textContent
+    coordsCall(search)
 }
 // TODO: Render Forecast functions
 function renderForecastContainer(daily) {
@@ -99,6 +99,7 @@ function renderForecastCard(forecast) {
 }
 // TODO: Render Current function 
 function renderCurrentContent(current, city) {
+    currentEl.innerHTML = ''
     var temp = current.temp
     var feelsLike = current.feels_like
     var weather = current.weather[0].main
@@ -144,16 +145,15 @@ function renderSearchHistory() {
     var searchHistory = JSON.parse(localStorage.getItem('WeatherAppHistory')) || []
     for (let i = 0; i < searchHistory.length; i++) {
         var button = document.createElement('button');
-        button.setAttribute('type','button')
-        button.setAttribute('class','recent-search')
-        button.setAttribute('data-recent',searchHistory[i])
+        button.setAttribute('type', 'button')
+        button.setAttribute('class', 'recent-search')
+        button.setAttribute('data-recent', searchHistory[i])
         button.textContent = searchHistory[i];
         recentSearchEl.append(button)
     }
 }
-
 renderSearchHistory()
 searchFormEl.addEventListener('submit', searchSubmitHandler)
-recentSearchEl.addEventListener('click',recentClickHandler)
+recentSearchEl.addEventListener('click', recentClickHandler)
 
 
