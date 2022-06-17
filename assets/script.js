@@ -8,24 +8,38 @@ const currentEl = document.getElementById('currentContainer')
 const forecastEl = document.getElementById('forecastContainer')
 
 // TODO: Create forecast fetch function
+function weatherCall(lat, lon) {
+    var weatherUrl = `${APIROOT}/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${APIKEY}`
+    console.log(weatherUrl)
+    fetch(weatherUrl)
+      .then((res)=>{ return res.json()})
+      .then((data)=>{
+          console.log(data)
+      })
+}
 // TODO: Create coords fetch function
-function coordsCall (city){
+function coordsCall(city) {
     console.log(city)
     var coordsUrl = `${APIROOT}/geo/1.0/direct?q=${city},US&appid=${APIKEY}`
     console.log(coordsUrl)
     fetch(coordsUrl)
-      .then((res)=>{return res.json()})
-      .then((data)=>{
-          if(!data){
-              alert('Your city was not found.')
-          } else {console.log(data)}
-      })
-      .catch((err)=>{console.error(err)})
+        .then((res) => { return res.json() })
+        .then((data) => {
+            if (!data) {
+                alert('Your city was not found.')
+            } else {
+                console.log(data)
+                let lat = data[0].lat
+                let lon = data[0].lon
+                weatherCall(lat,lon)
+            }
+        })
+        .catch((err) => { console.error(err) })
 }
 // TODO: Create event handlers
 // - Search Input Handler
-function searchHandler (e){
-    if(!searchInputEl.value){
+function searchHandler(e) {
+    if (!searchInputEl.value) {
         return alert('Please Enter A CityName');
     }
     e.preventDefault()
