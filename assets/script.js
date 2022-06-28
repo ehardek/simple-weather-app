@@ -5,9 +5,9 @@ const searchFormEl = document.getElementById('citySearch')
 const searchInputEl = document.getElementById('cityName')
 const recentSearchEl = document.getElementById('recentSearchs')
 const currentEl = document.getElementById('currentContainer')
-const forecastEl = document.getElementById('forecastContainer')
-
-// TODO: Create forecast fetch function
+const forecastEl = document.getElementById('forecastCards')
+const dashBoardEl = document.getElementById('dashboard')
+// This Function fetches the weather forecast using coordinates gathered by the coordsCall function
 function weatherCall(location) {
     var { lat, lon } = location
     var city = location.name
@@ -21,7 +21,7 @@ function weatherCall(location) {
             renderCurrentContent(current, city)
         })
 }
-// TODO: Create coords fetch function
+// This Function fetches the coordinates of the city searched by the user
 function coordsCall(search) {
     var coordsUrl = `${APIROOT}/geo/1.0/direct?q=${search},US&appid=${APIKEY}`
     fetch(coordsUrl)
@@ -35,9 +35,8 @@ function coordsCall(search) {
             }
         })
         .catch((err) => { console.error(err) })
-}
-// TODO: Create event handlers  
-// - Search Input Handler
+}  
+//Search Input Handler
 function searchSubmitHandler(e) {
     if (!searchInputEl.value) {
         return alert('Please Enter A CityName');
@@ -48,23 +47,32 @@ function searchSubmitHandler(e) {
     coordsCall(cityName)
     searchInputEl.value = ''
 }
-// - Recent search click handler 
+// Recent search click handler 
 function recentClickHandler(e) {
     e.preventDefault()
     var button = e.target
     var search = button.textContent
     coordsCall(search)
 }
-// TODO: Render Forecast functions
+// This function renders the contents of the forecast container. 
 function renderForecastContainer(daily) {
+
     forecastEl.innerHTML = ''
     var forecastHeading = document.createElement('h5')
     forecastHeading.setAttribute('id', 'forecastHeading')
-    forecastHeading.textContent = `5-Day Forecast`
-    forecastEl.append(forecastHeading);
+    forecastHeading.textContent = `8-Day Forecast`
+  
+
+    
+    // for (let i = 0; i < 7; i++) {
+    //     const forecast = daily[i];
+    //     renderForecastCard(forecast)
+    // }
     daily.forEach((forecast) => { renderForecastCard(forecast) })
 }
+// This function renders each individual forecast card with the relevant data.
 function renderForecastCard(forecast) {
+
     var tempMax = forecast.temp.max
     var tempMin = forecast.temp.min
     var humidity = forecast.humidity
@@ -79,7 +87,7 @@ function renderForecastCard(forecast) {
     let humidityEl = document.createElement('p')
     let iconEl = document.createElement('img')
 
-    card.append(tempMaxEl, tempMinEl, iconEl, weatherEl, humidityEl)
+    card.append(tempMaxEl, tempMinEl, weatherEl, iconEl, humidityEl)
 
     card.setAttribute('class', 'forecastCard')
     tempMaxEl.setAttribute('class', 'cardTemp')
@@ -97,7 +105,7 @@ function renderForecastCard(forecast) {
     weatherEl.textContent = `Weather: ${weather}`
     forecastEl.append(card)
 }
-// TODO: Render Current function 
+// This function renders the 
 function renderCurrentContent(current, city) {
     currentEl.innerHTML = ''
     var temp = current.temp
@@ -155,5 +163,3 @@ function renderSearchHistory() {
 renderSearchHistory()
 searchFormEl.addEventListener('submit', searchSubmitHandler)
 recentSearchEl.addEventListener('click', recentClickHandler)
-
-
