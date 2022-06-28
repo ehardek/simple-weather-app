@@ -1,10 +1,10 @@
-:root { 
+:root {
     --primary-color: lightcoral;
 }
 
 
 header {
-    background-color:var(--primary-color) ;
+    background-color: var(--primary-color);
     height: 55px;
     text-align: center;
 }
@@ -17,7 +17,7 @@ main {
     height: 75%;
 }
 
-#forecastContainer{
+#forecastContainer {
     text-align: center;
 }
 
@@ -59,9 +59,7 @@ aside {
     text-align: center;
     border-radius: 2.5%;
 }
-#searchButton { 
-    
-}
+
 button {
     background: #f7acf2;
     background-image: -webkit-linear-gradient(top, rgb(198, 146, 237), rgb(185, 112, 240));
@@ -78,8 +76,9 @@ button {
     font-family: Arial;
     color: #221919;
     text-decoration: none;
-  }
-  button:hover {
+}
+
+button:hover {
     background: #cc3cfc;
     text-decoration: none;
-  }
+}

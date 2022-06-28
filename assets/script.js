@@ -7,6 +7,7 @@ const recentSearchEl = document.getElementById('recentSearchs')
 const currentEl = document.getElementById('currentContainer')
 const forecastEl = document.getElementById('forecastCards')
 const dashBoardEl = document.getElementById('dashboard')
+
 // This Function fetches the weather forecast using coordinates gathered by the coordsCall function
 function weatherCall(location) {
     var { lat, lon } = location
@@ -35,7 +36,7 @@ function coordsCall(search) {
             }
         })
         .catch((err) => { console.error(err) })
-}  
+}
 //Search Input Handler
 function searchSubmitHandler(e) {
     if (!searchInputEl.value) {
@@ -61,9 +62,9 @@ function renderForecastContainer(daily) {
     var forecastHeading = document.createElement('h5')
     forecastHeading.setAttribute('id', 'forecastHeading')
     forecastHeading.textContent = `8-Day Forecast`
-  
 
-    
+
+
     // for (let i = 0; i < 7; i++) {
     //     const forecast = daily[i];
     //     renderForecastCard(forecast)
@@ -105,7 +106,7 @@ function renderForecastCard(forecast) {
     weatherEl.textContent = `Weather: ${weather}`
     forecastEl.append(card)
 }
-// This function renders the 
+// This function renders the current weather
 function renderCurrentContent(current, city) {
     currentEl.innerHTML = ''
     var temp = current.temp
@@ -138,7 +139,7 @@ function renderCurrentContent(current, city) {
 
 
 }
-// TODO: Create Save Recent Searches
+// This Function saves the most recent city input to local storage.
 function saveSearch(location) {
     let searchHistory = JSON.parse(localStorage.getItem('WeatherAppHistory')) || []
     if (searchHistory.includes(location) === false) {
@@ -148,6 +149,7 @@ function saveSearch(location) {
     }
     renderSearchHistory()
 }
+// This function checks for local storage then renders whats listed
 function renderSearchHistory() {
     recentSearchEl.innerHTML = ''
     var searchHistory = JSON.parse(localStorage.getItem('WeatherAppHistory')) || []
@@ -161,5 +163,6 @@ function renderSearchHistory() {
     }
 }
 renderSearchHistory()
+// These are the event listeners used. 
 searchFormEl.addEventListener('submit', searchSubmitHandler)
 recentSearchEl.addEventListener('click', recentClickHandler)
