@@ -1,27 +1,43 @@
+:root { 
+    --primary-color: lightcoral;
+}
 
-header { 
-background-color: lightcoral;
-height: 55px;
-text-align: center;
+
+header {
+    background-color:var(--primary-color) ;
+    height: 55px;
+    text-align: center;
 }
+
 main {
-    display:flex;
-    flex-direction: row;
-    margin:auto;
-    height:75%;
-    
-}
-#forecastContainer{
     display: flex;
     flex-direction: row;
+    align-content: baseline;
+    margin: auto;
+    height: 75%;
+}
+
+#forecastContainer{
+    text-align: center;
+}
+
+#forecastCards {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+    justify-content: space-evenly;
     margin: 2em;
 }
-.forecastCard{ 
- background-color: lavenderblush;
- padding:1%;
- margin: .1em;
- width: fit-content;
- height: fit-content;
+
+.forecastCard {
+    display: flex;
+    flex-direction: column;
+    background-color: lavenderblush;
+    padding: 1%;
+    margin: .1em;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 2.5%;
 }
 
 aside {
@@ -29,8 +45,9 @@ aside {
     width: 250px;
     background-color: rgb(134, 110, 152);
     padding: .5em;
-    margin: .5em ;
+    margin: .5em;
     position: relative;
+    border-radius: 2.5%;
 }
 
 #currentContainer {
@@ -40,4 +57,29 @@ aside {
     margin: 10px;
     padding-top: 25px;
     text-align: center;
+    border-radius: 2.5%;
 }
+#searchButton { 
+    
+}
+button {
+    background: #f7acf2;
+    background-image: -webkit-linear-gradient(top, rgb(198, 146, 237), rgb(185, 112, 240));
+    background-image: -moz-linear-gradient(top, rgb(198, 146, 237), rgb(185, 112, 240));
+    background-image: -ms-linear-gradient(top, rgb(198, 146, 237), rgb(185, 112, 240));
+    background-image: -o-linear-gradient(top, rgb(198, 146, 237), rgb(185, 112, 240));
+    background-image: linear-gradient(to bottom, rgb(198, 146, 237), rgb(185, 112, 240));
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 1px 3px #666666;
+    -moz-box-shadow: 0px 1px 3px #666666;
+    box-shadow: 0px 1px 3px #6666669a;
+    font-family: Arial;
+    color: #221919;
+    text-decoration: none;
+  }
+  button:hover {
+    background: #cc3cfc;
+    text-decoration: none;
+  }
